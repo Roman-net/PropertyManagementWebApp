@@ -1,0 +1,86 @@
+﻿@model CSD480Group3Capstone001.Models.RepairHistory
+
+
+    <div>
+        <h4>RepairHistory</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-4">
+                Company
+            </dt>
+            <dd class="col-sm-6">
+                @Model.Contractor.Company
+            </dd>
+            <dt class="col-sm-4">
+                Phone#
+            </dt>
+            <dd class="col-sm-6">
+                @Model.Contractor.PhoneNumber
+            </dd>
+            <dt class="col-sm-4">
+                Description
+            </dt>
+            <dd class="col-sm-6">
+                @Model.Notes
+            </dd>
+            <dt class="col-sm-4">
+                Building
+            </dt>
+            <dd class="col-sm-6">
+                @{
+                    if (Model.Building != null)
+                    {
+                        @Model.Building.Address
+                    }
+                }
+            </dd>
+            @{
+                if (Model.Unit != null)
+                {
+                    <dt class="col-sm-4">
+                        Unit
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Model.Unit.UnitNumber
+                    </dd>
+                }
+            }
+            <dt class="col-sm-4">
+                Start Date
+            </dt>
+            <dd class="col-sm-6">
+                @Model.StartDate.ToString("MM/dd/yyyy")
+            </dd>
+            <dt class="col-sm-4">
+                Finsh Date
+            </dt>
+            <dd class="col-sm-6">
+                @{
+                    if (Model.FinishDate != null)
+                    {
+                        var date = ((DateTime)Model.FinishDate).ToString("MM/dd/yyyy");
+                        <span>@date</span>
+                    }
+                    else
+                    {
+                        <span style="color:red">Unfinished</span>
+                    }
+                }
+            </dd>
+            <dt class="col-sm-4">
+                Cost
+            </dt>
+            <dd class="col-sm-6">
+                @string.Format("{0:C}", Model.Cost)
+            </dd>
+            <dt class="col-sm-4">
+                Paid
+            </dt>
+            <dd class="col-sm-6">
+                @Model.Paid
+            </dd>
+        </dl>
+    </div>
+
+
+
